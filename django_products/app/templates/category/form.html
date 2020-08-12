@@ -1,1 +1,7 @@
+<!--app/templates/category/form.html-->
 <h3>Thông tin nhóm sản phẩm</h3>
+<form method="POST" novalidate>
+  {%csrf_token%}
+  <table>{{form}}</table>
+  <button type="submit">Lưu lại</button>
+</form>
