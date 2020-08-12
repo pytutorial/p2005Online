@@ -1,0 +1,13 @@
+<!--app/templates/product/list.html-->
+<ul>
+  {%for p in productList %}
+    <li>
+      {{p.name}}
+      <a href='/update_product/{{p.id}}'>Chỉnh sửa</a>
+      <a href='javascript:deleteProduct({{p.id}})'>Xóa</a>
+    </li> 
+  {%endfor%}
+</ul>
+<a href='/create_product'>
+  Thêm sản phẩm
+</a>

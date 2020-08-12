@@ -28,3 +28,28 @@ def deleteCategory(request, pk):
     category = Category.objects.get(pk=pk)
     category.delete()
     return redirect('/')
+
+#127.0.0.1:8000/list_product
+def listProduct(request):
+    productList = Product.objects.all()
+    return render(request, 'product/list.html'
+            , {'productList': productList})
+
+def createProduct(request):
+    form = ProductForm()
+    if request.method == 'POST':
+        form = ProductForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            return redirect('/list_product')
+    return render(request, 'product/form.html'
+                    ,{'form': form})
+
+def deleteProduct(request, pk):                    
+    product = Product.objects(pk=pk)
+    product.delete()
+    return redirect('/list_product')
+
+def updateProduct(request, pk):
+    return render(request,
+         'product/form.html')    
