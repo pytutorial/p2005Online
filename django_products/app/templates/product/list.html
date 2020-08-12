@@ -11,3 +11,10 @@
 <a href='/create_product'>
   Thêm sản phẩm
 </a>
+<script>
+  function deleteProduct(id) {
+    if(confirm('Bạn có muốn xóa?')) {
+      location.href = '/delete_product/' + id;
+    }
+  }
+</script>

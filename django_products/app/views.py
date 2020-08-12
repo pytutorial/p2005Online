@@ -45,7 +45,7 @@ def createProduct(request):
     return render(request, 'product/form.html', {'form': form})
 
 def deleteProduct(request, pk):                    
-    product = Product.objects(pk=pk)
+    product = Product.objects.get(pk=pk)
     product.delete()
     return redirect('/list_product')
 
