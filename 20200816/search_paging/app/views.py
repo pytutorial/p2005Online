@@ -11,6 +11,8 @@ def getPriceRangeValue(priceRange):
     return (None, None)
 
 def index(request):
+    PAGE_SIZE = 5
+    page = request.GET.get('page', 1)
     categoryId = request.GET.get('categoryId', '')
     categoryId = int(categoryId) if categoryId else ''
 
@@ -27,7 +29,9 @@ def index(request):
     if maxPrice:
         productList = productList.filter(price__lte=maxPrice)
 
-    productList = productList.filter(category__id=categoryId)
+    if categoryId:
+        productList = productList.filter(category__id=categoryId)
+
     categoryList = Category.objects.all()
     context = {
         'priceRange': priceRange,
