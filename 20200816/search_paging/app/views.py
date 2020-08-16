@@ -1,5 +1,5 @@
 from django.shortcuts import render
-
+import math
 # Create your views here.
 from .models import *
 
@@ -12,7 +12,7 @@ def getPriceRangeValue(priceRange):
 
 def index(request):
     PAGE_SIZE = 5
-    page = request.GET.get('page', 1)
+    page = int(request.GET.get('page', 1))
     categoryId = request.GET.get('categoryId', '')
     categoryId = int(categoryId) if categoryId else ''
 
@@ -34,6 +34,10 @@ def index(request):
 
     start = (page-1) * PAGE_SIZE
     end = start + PAGE_SIZE
+    total = len(productList)                 # Tổng số bản ghi
+    num_page = math.ceil(total / PAGE_SIZE)  # Tổng số trang
+    prev_page = max(page - 1, 1)             # Trang trước
+    next_page = min(page + 1, num_page)      # Trang sau
     productList = productList[start:end]
 
     categoryList = Category.objects.all()
@@ -42,6 +46,8 @@ def index(request):
         'categoryId': categoryId,
         'keyword': keyword,
         'categoryList': categoryList,
+        'start': start, 'total': total, 'num_page': num_page,
+        'page': page, 'prev_page': prev_page, 'next_page': next_page,
         'productList':  productList
     }
     return render(request, 'index.html' , context)
