@@ -8,6 +8,7 @@ def index(request):
     categoryId = int(categoryId) if categoryId else ''
     keyword = request.GET.get('keyword', '')
     productList = Product.objects.filter(name__contains=keyword)
+    productList = productList.filter(category__id=categoryId)
     categoryList = Category.objects.all()
     context = {
         'categoryId': categoryId,
