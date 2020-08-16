@@ -4,10 +4,13 @@ from django.shortcuts import render
 from .models import *
 
 def index(request):
+    categoryId = request.GET.get('categoryId', '')
+    categoryId = int(categoryId) if categoryId else ''
     keyword = request.GET.get('keyword', '')
     productList = Product.objects.filter(name__contains=keyword)
     categoryList = Category.objects.all()
     context = {
+        'categoryId': categoryId,
         'keyword': keyword,
         'categoryList': categoryList,
         'productList':  productList
