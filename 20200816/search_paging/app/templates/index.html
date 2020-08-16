@@ -30,7 +30,7 @@
     <tbody>
       {%for p in productList %}
         <tr>
-          <td>{{forloop.counter}}</td>
+          <td>{{forloop.counter|add:start}}</td>
           <td>{{p.category.name}}</td>
           <td>{{p.code}}</td>
           <td>{{p.name}}</td>
@@ -44,8 +44,10 @@
       {% endif %}
     </tbody>
   </table>
-  <a href='?page=1&keyword={{keyword}}&categoryId={{categoryId}}&&priceRange={{priceRange}}'>First</a>
-  <a href='#'>Prev</a>
-  <a href='#'>Next</a>
-  <a href='#'>Last</a>
+  <a href='?page=1&keyword={{keyword}}&categoryId={{categoryId}}&priceRange={{priceRange}}'>First</a>
+  <a href='?page={{prev_page}}&keyword={{keyword}}&categoryId={{categoryId}}&priceRange={{priceRange}}'>Prev</a>
+  <a href='?page={{next_page}}&keyword={{keyword}}&categoryId={{categoryId}}&priceRange={{priceRange}}'>Next</a>
+  <a href='?page={{num_page}}&keyword={{keyword}}&categoryId={{categoryId}}&priceRange={{priceRange}}'>Last</a>
+  <small>Trang số {{page}}/{{num_page}}</small>
+  <br><small>Tổng số bản ghi: {{total}}</small>
 </form>

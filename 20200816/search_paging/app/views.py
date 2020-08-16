@@ -12,7 +12,7 @@ def getPriceRangeValue(priceRange):
 
 def index(request):
     PAGE_SIZE = 5
-    page = int(request.GET.get('page', 1))
+    page = int(request.GET.get('page') or 1)
     categoryId = request.GET.get('categoryId', '')
     categoryId = int(categoryId) if categoryId else ''
 
