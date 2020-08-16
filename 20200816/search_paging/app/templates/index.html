@@ -8,6 +8,14 @@
       <option {%if c.id == categoryId %} selected {% endif %} value="{{c.id}}">{{c.name}}</option>
     {% endfor %}
   </select>
+  <label>Mức giá</label>
+  <select name='priceRange'>
+    <option value="">--Tất cả--</option>
+    <option {%if 1 == priceRange %} selected {% endif %} value="1">Dưới 5 triệu</option>
+    <option {%if 2 == priceRange %} selected {% endif %} value="2">Từ 5 đến 10 triệu</option>
+    <option {%if 3 == priceRange %} selected {% endif %} value="3">Từ 10 đến 20 triệu</option>
+    <option {%if 4 == priceRange %} selected {% endif %} value="4">Trên 20 triệu</option>
+  </select>
   <button type="submit">Tìm kiếm</button>
   <table border="1">
     <thead>
