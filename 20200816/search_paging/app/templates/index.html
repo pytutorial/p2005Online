@@ -1,2 +1,23 @@
 <!--app/templates/index.html-->
-Home page
+<table border="1">
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>Nhóm sản phẩm</th>
+      <th>Mã</th>
+      <th>Tên</th>    
+      <th>Đơn giá</th>  
+    </tr>
+  </thead>
+  <tbody>
+    {%for p in productList %}
+      <tr>
+        <td>{{forloop.counter}}</td>
+        <td>{{p.category.name}}</td>
+        <td>{{p.code}}</td>
+        <td>{{p.name}}</td>
+        <td>{{p.price}}</td>
+      </tr>
+    {%endfor%}
+  </tbody>
+</table>
