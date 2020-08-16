@@ -64,12 +64,25 @@
         {% endif %}
       </tbody>
     </table>
-    <a href='?page=1&keyword={{keyword}}&categoryId={{categoryId}}&priceRange={{priceRange}}'>First</a>
-    <a href='?page={{prev_page}}&keyword={{keyword}}&categoryId={{categoryId}}&priceRange={{priceRange}}'>Prev</a>
-    <a href='?page={{next_page}}&keyword={{keyword}}&categoryId={{categoryId}}&priceRange={{priceRange}}'>Next</a>
-    <a href='?page={{num_page}}&keyword={{keyword}}&categoryId={{categoryId}}&priceRange={{priceRange}}'>Last</a>
-    <small>Trang số {{page}}/{{num_page}}</small>
-    <br><small>Tổng số bản ghi: {{total}}</small>
+    
+    <ul class="pagination">
+      <li class="page-item">
+        <a class="page-link" href="?page=1&keyword={{keyword}}&categoryId={{categoryId}}&priceRange={{priceRange}}">
+          &laquo;</a>
+      </li>
+      <li class="page-item">
+        <a class="page-link" href="?page={{prev_page}}&keyword={{keyword}}&categoryId={{categoryId}}&priceRange={{priceRange}}">
+          &lsaquo;</a>
+        </li>
+      <li class="page-item"><a class="page-link" href="?page={{next_page}}&keyword={{keyword}}&categoryId={{categoryId}}&priceRange={{priceRange}}">
+        &rsaquo;</a>
+      </li>
+      <li class="page-item"><a class="page-link" href="?page={{num_page}}&keyword={{keyword}}&categoryId={{categoryId}}&priceRange={{priceRange}}">
+        &raquo;</a>
+      </li>
+    </ul>
+
+    <small>Trang {{page}}/{{num_page}}, trên tổng số {{total}} bản ghi</small>
   </form>
 </div>
 
