@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.db.models import Q
 import math
 # Create your views here.
 from .models import *
@@ -21,7 +22,8 @@ def index(request):
     minPrice, maxPrice = getPriceRangeValue(priceRange)
 
     keyword = request.GET.get('keyword', '')
-    productList = Product.objects.filter(name__contains=keyword)
+    productList = Product.objects.filter(
+                    Q(name__icontains=keyword)|Q(code__icontains=keyword))
     
     if minPrice: 
         productList = productList.filter(price__gte=minPrice) 
@@ -31,6 +33,8 @@ def index(request):
 
     if categoryId:
         productList = productList.filter(category__id=categoryId)
+
+    productList = productList.order_by('-price', 'name')
 
     start = (page-1) * PAGE_SIZE
     end = start + PAGE_SIZE
