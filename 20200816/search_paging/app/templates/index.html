@@ -1,6 +1,13 @@
 <!--app/templates/index.html-->
 <form>
   <input value='{{keyword}}' name="keyword" placeholder="Nhập tên/mã sản phẩm">
+  <label>Nhóm sản phẩm:</label>
+  <select>
+    <option value="">--Tất cả--</option>
+    {% for c in categoryList %}
+      <option value="{{c.id}}">{{c.name}}</option>
+    {% endfor %}
+  </select>
   <table border="1">
     <thead>
       <tr>
