@@ -1,23 +1,31 @@
 <!--app/templates/index.html-->
-<table border="1">
-  <thead>
-    <tr>
-      <th>#</th>
-      <th>Nhóm sản phẩm</th>
-      <th>Mã</th>
-      <th>Tên</th>    
-      <th>Đơn giá</th>  
-    </tr>
-  </thead>
-  <tbody>
-    {%for p in productList %}
+<form>
+  <input value='{{keyword}}' name="keyword" placeholder="Nhập tên/mã sản phẩm">
+  <table border="1">
+    <thead>
       <tr>
-        <td>{{forloop.counter}}</td>
-        <td>{{p.category.name}}</td>
-        <td>{{p.code}}</td>
-        <td>{{p.name}}</td>
-        <td>{{p.price}}</td>
+        <th>#</th>
+        <th>Nhóm sản phẩm</th>
+        <th>Mã</th>
+        <th>Tên</th>    
+        <th>Đơn giá</th>  
       </tr>
-    {%endfor%}
-  </tbody>
-</table>
+    </thead>
+    <tbody>
+      {%for p in productList %}
+        <tr>
+          <td>{{forloop.counter}}</td>
+          <td>{{p.category.name}}</td>
+          <td>{{p.code}}</td>
+          <td>{{p.name}}</td>
+          <td>{{p.price}}</td>
+        </tr>
+      {%endfor%}
+      {% if not productList %}
+        <tr>
+          <td colspan='5'>Không có sản phẩm nào</td>
+        </tr>
+      {% endif %}
+    </tbody>
+  </table>
+</form>
