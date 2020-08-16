@@ -32,6 +32,10 @@ def index(request):
     if categoryId:
         productList = productList.filter(category__id=categoryId)
 
+    start = (page-1) * PAGE_SIZE
+    end = start + PAGE_SIZE
+    productList = productList[start:end]
+
     categoryList = Category.objects.all()
     context = {
         'priceRange': priceRange,
