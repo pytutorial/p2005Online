@@ -1,4 +1,4 @@
-Hello {{user.username}}
+Hello {{user.username}} ({{user.phone}})
 {% if user.is_authenticated %}
     <a href="/accounts/logout">Logout</a>
 {%else%}
