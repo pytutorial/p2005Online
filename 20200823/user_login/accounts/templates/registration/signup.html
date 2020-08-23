@@ -1,12 +1,45 @@
 <!--accounts/templates/registration/signup.html-->
-<h3>Signup</h3>
-<form method="POST">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+  integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+
+<style>
+  .signup-form {
+    max-width: 400px;
+    margin: 100px auto 0 auto;
+    border: solid 1px #DDD;
+    padding: 20px
+  }
+</style>
+<div class="signup-form">
+  <h3>Đăng ký</h3>
+  <form method="POST">
     {%csrf_token%}
-    <p>Username: <input name="username"></p>
-    <p>Password: <input name="password1" type="password"></p>
-    <p>Password confirm: <input name="password2" type="password"></p>
-    <p>Phone: <input name="phone"></p>
-    <p>Address <input name="address"></p>
-    <button type="submit">Signup</button>
-    {{form.errors}}
-</form>    
+    <div class="form-group">    
+      <label>Tên đăng nhập:</label>  
+      <input name="username" value="{{form.username.value|default:''}}" class="form-control">
+      <div style="color:red">{{ form.username.errors }}</div>
+    </div>
+    <div class="form-group">    
+      <label>Mật khẩu:</label>   
+      <input name="password1" type="password" class="form-control"> 
+      <div style="color:red">{{ form.password1.errors }}</div>
+    </div>
+    <div class="form-group"> 
+      <label>Mật khẩu xác thực:</label>    
+      <input name="password2" type="password" class="form-control">   
+      <div style="color:red">{{ form.password2.errors }}</div>
+    </div>
+    <div class="form-group">    
+      <label>Số điện thoại:</label>   
+      <input name="phone" value="{{form.phone.value|default:''}}" class="form-control">
+      <div style="color:red">{{ form.phone.errors }}</div>
+    </div>
+    <div class="form-group">   
+      <label>Địa chỉ:</label>    
+      <input name="address" value="{{form.address.value|default:''}}" class="form-control"> 
+      <div style="color:red">{{ form.address.errors }}</div>
+    </div>   
+    <button type="submit" class="btn btn-primary">Đăng ký</button>
+    <div>{{form.non_field_errors}}</div>
+  </form>
+</div>

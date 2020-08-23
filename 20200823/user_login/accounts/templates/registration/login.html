@@ -1,12 +1,33 @@
-<!--accounts/templates/registration/
-    login.html-->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+  integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
 
-<h3>Login</h3>   
-<form method="POST">
+<style>
+  .login-form {
+    max-width: 400px;
+    margin: 100px auto 0 auto;
+    border: solid 1px #DDD;
+    padding: 20px
+  }
+</style>
+
+<div class="login-form">
+  <h3>Đăng nhập</h3>
+  <form method="POST">
     {%csrf_token%}
-    <p>Username: <input name="username"></p> 
-    <p>Password: <input name="password" type="password"></p>
-    <button type="submit">Login</button>
-    <a href="/accounts/signup">Signup</a>
-    {{form.errors}}
-</form>
+    <div class="form-group">
+      <label>Tên tài khoản:</label>
+      <input name="username" class="form-control"
+             value="{{form.username.value|default:''}}">
+      <div style="color:red">{{form.username.errors}}</div>
+    </div>
+    <div class="form-group">
+      <label>Mật khẩu:</label>
+      <input name="password" type="password" class="form-control">
+      <div style="color:red">{{form.password.errors}}</div>
+    </div>
+    <div style="color:red">{{ form.non_field_errors }}</div>
+    <button class="btn btn-primary" type="submit">Đăng nhập</button>
+    <a class="btn btn-secondary" href="/accounts/signup">Đăng ký</a>
+    
+  </form>
+</div>
