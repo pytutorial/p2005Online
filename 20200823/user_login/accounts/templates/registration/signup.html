@@ -1,3 +1,10 @@
-<!--accounts/templates/
-registration/signup.html-->
+<!--accounts/templates/registration/signup.html-->
 <h3>Signup</h3>
+<form method="POST">
+    {%csrf_token%}
+    <p>Username: <input name="username"></p>
+    <p>Password: <input name="password1" type="password"></p>
+    <p>Password confirm: <input name="password2" type="password"></p>
+    <button type="submit">Signup</button>
+    {{form.errors}}
+</form>    
