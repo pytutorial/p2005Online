@@ -4,7 +4,7 @@
 
 <style>
   .signup-form {
-    max-width: 400px;
+    max-width: 600px;
     margin: 100px auto 0 auto;
     border: solid 1px #DDD;
     padding: 20px
@@ -14,6 +14,56 @@
   <h3>Đăng ký</h3>
   <form method="POST">
     {%csrf_token%}
+    <table class="table">
+      <tr>
+        <td>
+          <label>Tên đăng nhập:</label> 
+        </td>
+        <td>
+          <input name="username" value="{{form.username.value|default:''}}" class="form-control">
+          <div style="color:red">{{ form.username.errors }}</div>
+        </td>
+      </tr>    
+      <tr>
+        <td>
+          <label>Mật khẩu:</label>   
+        </td>
+        <td>          
+          <input name="password1" type="password" class="form-control"> 
+          <div style="color:red">{{ form.password1.errors }}</div>
+        </td>
+      </tr>  
+      <tr>
+        <td>
+          <label>Mật khẩu xác thực:</label>    
+        </td>
+        <td>      
+          <input name="password2" type="password" class="form-control">   
+          <div style="color:red">{{ form.password2.errors }}</div>    
+        </td>
+      </tr>  
+      <tr>
+        <td>
+          <label>Số điện thoại:</label>   
+        </td>
+        <td>     
+          <input name="phone" value="{{form.phone.value|default:''}}" class="form-control">
+          <div style="color:red">{{ form.phone.errors }}</div>     
+        </td>
+      </tr>  
+      <tr>
+        <td>
+          <label>Địa chỉ:</label>    
+        </td>
+        <td>       
+          <input name="address" value="{{form.address.value|default:''}}" class="form-control"> 
+          <div style="color:red">{{ form.address.errors }}</div>   
+        </td>
+      </tr>  
+    </table>
+    <button type="submit" class="btn btn-primary">Đăng ký</button>
+    <div>{{form.non_field_errors}}</div>
+    <!--
     <div class="form-group">    
       <label>Tên đăng nhập:</label>  
       <input name="username" value="{{form.username.value|default:''}}" class="form-control">
@@ -39,7 +89,8 @@
       <input name="address" value="{{form.address.value|default:''}}" class="form-control"> 
       <div style="color:red">{{ form.address.errors }}</div>
     </div>   
+    
     <button type="submit" class="btn btn-primary">Đăng ký</button>
-    <div>{{form.non_field_errors}}</div>
+    <div>{{form.non_field_errors}}</div>-->
   </form>
 </div>
