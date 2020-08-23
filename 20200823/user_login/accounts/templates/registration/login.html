@@ -1,4 +1,11 @@
 <!--accounts/templates/registration/
     login.html-->
 
-<h3>Login</h3>    
+<h3>Login</h3>   
+<form method="POST">
+    {%csrf_token%}
+    <p>Username: <input name="username"></p> 
+    <p>Password: <input name="password" type="password"></p>
+    <button type="submit">Login</button>
+    {{form.errors}}
+</form>
