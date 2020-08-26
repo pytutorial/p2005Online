@@ -1,0 +1,13 @@
+<!--app/templates/base.html-->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+{%block navbar%}
+<div class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="navbar-nav">
+        <a class="nav-item nav-link {%if page == 1%} active {%endif%}" href="/">Home</a>
+        <a class="nav-item nav-link {%if page == 2%} active {%endif%}" href="/page2">Page 2</a>
+    </div>
+</div>
+{%endblock%}
+<br>
+{%block content%}
+{%endblock%}
