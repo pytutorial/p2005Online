@@ -1,6 +1,13 @@
 <!--app/templates/category/form.html-->
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+{%extends "../base.html" %}
+
+{%block navbar%}
+  {%with page=1%}
+    {{block.super}}
+  {%endwith%}
+{%endblock%}
+
+{%block content %}
 <div class="container pt-3">
   <h3>Thông tin nhóm sản phẩm</h3>
   <form method="POST" novalidate>
@@ -15,3 +22,4 @@
     $('.table-form input').addClass('form-control');
   });
 </script>
+{%endblock%}
