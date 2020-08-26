@@ -1,10 +1,13 @@
 from django.shortcuts import render, redirect
 from .forms import *
+from django.contrib.auth.decorators import login_required
 
+@login_required
 def listCategory(request):
     categoryList = Category.objects.all()
     return render(request, 'category/list.html', {'categoryList' : categoryList})
 
+@login_required
 def createCategory(request):
     form = CategoryForm()
     if request.method == 'POST':
@@ -14,6 +17,7 @@ def createCategory(request):
             return redirect('/staff')
     return render(request, 'category/form.html', {'form': form})    
 
+@login_required
 def updateCategory(request, pk):
     category = Category.objects.get(pk=pk)
     form = CategoryForm(instance=category)
@@ -24,17 +28,20 @@ def updateCategory(request, pk):
             return redirect('/staff')
     return render(request, 'category/form.html', {'form': form})
 
+@login_required
 def deleteCategory(request, pk):
     category = Category.objects.get(pk=pk)
     category.delete()
     return redirect('/')
 
 #127.0.0.1:8000/list_product
+@login_required
 def listProduct(request):
     productList = Product.objects.all()
     return render(request, 'product/list.html'
             , {'productList': productList})
 
+@login_required
 def createProduct(request):
     form = ProductForm()
     if request.method == 'POST':
@@ -44,11 +51,13 @@ def createProduct(request):
             return redirect('/list_product')
     return render(request, 'product/form.html', {'form': form})
 
+@login_required
 def deleteProduct(request, pk):                    
     product = Product.objects.get(pk=pk)
     product.delete()
     return redirect('/list_product')
 
+@login_required
 def updateProduct(request, pk):
     product = Product.objects.get(pk=pk)
     form = ProductForm(instance=product)
