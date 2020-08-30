@@ -14,5 +14,9 @@ class Product(models.Model):
     price = models.FloatField(verbose_name='Đơn giá')
     image = models.ImageField(upload_to='static/images', verbose_name='Ảnh mẫu')
 
+    @property
+    def priceInt(self):
+        return int(self.price)
+
     def __str__(self):
         return self.name
