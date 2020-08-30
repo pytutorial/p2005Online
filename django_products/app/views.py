@@ -67,3 +67,11 @@ def updateProduct(request, pk):
             form.save()
             return redirect('/list_product')
     return render(request, 'product/form.html', {'form': form})
+
+@login_required
+def listOrder(request):
+    return render(request, 'order/list.html')
+
+@login_required
+def viewOrder(request, pk):
+    return render(request, 'order/detail.html')    

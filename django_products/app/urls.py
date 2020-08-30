@@ -19,4 +19,7 @@ urlpatterns = [
     path('create_product', createProduct),
     path('update_product/<pk>', updateProduct), 
     path('delete_product/<pk>', deleteProduct),
+
+    path('list_order', listOrder),
+    path('view_order/<pk>', viewOrder),
 ]
