@@ -7,6 +7,7 @@ urlpatterns = [
     path('', index),
     path('view_product/<pk>', viewProduct),
     path('order_product/<pk>', orderProduct),
+    path('thank_you', thankYou),
     #==================Staff==================
 
     path('staff', listCategory),
