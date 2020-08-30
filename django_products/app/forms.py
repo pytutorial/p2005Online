@@ -11,3 +11,8 @@ class ProductForm(forms.ModelForm):
         model = Product
         fields = '__all__'
             
+class OrderForm(forms.Form):            
+    qty = forms.IntegerField(min_value=1)
+    fullname = forms.CharField(max_length=50)
+    phone = forms.CharField(max_length=20)
+    address = forms.CharField(max_length=200)

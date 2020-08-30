@@ -44,7 +44,7 @@
       <nav class="navbar navbar-expand navbar-dark bg-primary p-0">
         <ul class="navbar-nav">
           <li class="nav-item active">
-            <a class="nav-link" href="#">Sản phẩm</a>
+            <a class="nav-link" href="/">Sản phẩm</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="#">Liên hệ</a>
@@ -56,13 +56,13 @@
 
   <div class="container mt-5 mb-5">
     <form>
-      <input name="name" class="form-control" placeholder="Nhập tên sản phẩm để tìm">
+      <input name="name" value='{{name}}' class="form-control" placeholder="Nhập tên sản phẩm để tìm">
     </form>
     <ul class="list-unstyled row">
       {%for p in productList %}
         <li class="list-item col-sm-4 mt-3">
           <div class='item-container'>
-            <a href="product.html?id=1" class='product-item'>
+            <a href="/view_product/{{p.id}}" class='product-item'>
               <img src="/{{p.image}}" class='product-image'>
               <div class="item-info">
                 <div>

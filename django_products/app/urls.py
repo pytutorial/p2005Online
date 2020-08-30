@@ -5,6 +5,8 @@ from .views_user import *
 urlpatterns = [
     #==================User===================
     path('', index),
+    path('view_product/<pk>', viewProduct),
+    path('order_product/<pk>', orderProduct),
     #==================Staff==================
 
     path('staff', listCategory),
