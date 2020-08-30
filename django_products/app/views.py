@@ -70,7 +70,9 @@ def updateProduct(request, pk):
 
 @login_required
 def listOrder(request):
-    return render(request, 'order/list.html')
+    orderList = Order.objects.all()
+    context = {'orderList': orderList}
+    return render(request, 'order/list.html', context)
 
 @login_required
 def viewOrder(request, pk):

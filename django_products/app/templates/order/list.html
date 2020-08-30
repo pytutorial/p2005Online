@@ -8,5 +8,22 @@
 {%endblock%}
 
 {%block content %}
-    List order
+  <div class="container pt-3">
+    <table class="table table-bordered">
+      <thead>
+        <tr class="text-center">
+          <th>STT</th>
+          <th>Sản phẩm</th>
+          <th>Người mua</th>
+          <th>Ngày đặt hàng</th>
+          <th>Trạng thái</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        {%for o in orderList %}
+        {%endfor%}
+      </tbody>
+    </table>
+  </div>
 {%endblock%}
