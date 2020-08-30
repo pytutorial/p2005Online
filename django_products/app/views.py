@@ -76,4 +76,6 @@ def listOrder(request):
 
 @login_required
 def viewOrder(request, pk):
-    return render(request, 'order/detail.html')    
+    order = Order.objects.get(pk=pk)    #get_object_or_404
+    context = {'order': order}
+    return render(request, 'order/detail.html', context)    

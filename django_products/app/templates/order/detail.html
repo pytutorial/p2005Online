@@ -8,5 +8,49 @@
 {%endblock%}
 
 {%block content %}
-    List order
+  <div class="container">
+    <h3>Thông tin đơn hàng</h3>
+    <table class="table">
+      <tr>
+        <th style="width:30%">Sản phẩm: </th>
+        <td>{{ order.product.name }}</td>
+      </tr>
+      <tr>
+        <th>Số lượng:</th> <td>{{order.qty}}</td>
+      </tr>
+      <tr>
+        <th>Đơn giá:</th> <td>{{order.priceUnit}}</td>
+      </tr>
+      <tr>
+        <th>Người mua hàng:</th> <td>{{order.fullname}}</td>
+      </tr>
+      <tr>
+        <th>Số điện thoại người mua hàng:</th> <td>{{order.phone}}</td>
+      </tr>
+      <tr>
+        <th>Địa chỉ người mua hàng:</th> <td>{{order.address}}</td>
+      </tr>
+      <tr>
+        <th>Ngày đặt hàng:</th> <td>{{order.dateOrder|date:"d/m/Y H:i:s"}}</td>
+      </tr>
+      {% if order.status == 2 %}
+        <tr>
+          <th>Ngày nhận hàng:</th> <td>{{order.deliverDate|date:"d/m/Y H:i:s"}}</td>
+        </tr>
+      {%endif%}
+      <tr>
+        <th>Trạng thái:</th> 
+        <td>
+          {% if order.status == 0 %} Đang chờ nhận hàng {%endif%}
+          {% if order.status == 1 %} Đã nhận hàng {%endif%}
+          {% if order.status == 2 %} Đã hủy {%endif%}
+        </td>
+      </tr>      
+    </table>
+
+    {%if order.status == 0 %}
+      <button class="btn btn-sm btn-primary">Xác nhận hàng đã giao</button>
+      <button class="btn btn-sm btn-danger">Hủy đơn hàng</button>
+    {%endif%}
+  </div>
 {%endblock%}
