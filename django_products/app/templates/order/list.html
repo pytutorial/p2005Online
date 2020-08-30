@@ -22,6 +22,22 @@
       </thead>
       <tbody>
         {%for o in orderList %}
+          <tr>
+            <td class="text-center">{{ forloop.counter }}</td>
+            <td>{{ o.product.name }}</td>
+            <td>{{ o.fullname }}</td>
+            <td class="text-center">{{ o.dateOrder|date:"d/m/Y H:i:s"}}</td>
+            <td>
+              {% if o.status == 0 %} Đang chờ nhận hàng {%endif%}
+              {% if o.status == 1 %} Đã nhận hàng {%endif%}
+              {% if o.status == 2 %} Đã hủy {%endif%}
+            </td>
+            <td class="text-center">
+              <a href='/view_order/{{o.id}}' class='btn btn-sm btn-secondary'>
+                Xem chi tiết
+              </a>
+            </td>
+          </tr>
         {%endfor%}
       </tbody>
     </table>
