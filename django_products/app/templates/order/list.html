@@ -1,0 +1,12 @@
+<!--app/templates/order/list.html-->
+{%extends "../base.html" %}
+
+{%block navbar%}
+  {%with page=3%}
+    {{block.super}}
+  {%endwith%}
+{%endblock%}
+
+{%block content %}
+    List order
+{%endblock%}
