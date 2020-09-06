@@ -24,10 +24,24 @@ class ProductCreateView(CreateView):
 
 # 127.0.0.1:8000/update_product/1
 class ProductUpdateView(UpdateView):
-    model = Product
-    fields = '__all__'
-    template_name = 'product_form.html'
-    success_url = '/'
+    #model = Product
+    #fields = '__all__'
+    #template_name = 'product_form.html'
+    #success_url = '/'
+
+    def get(self, request, pk):
+        p = Product.objects.get(pk=pk)
+        form = ProductForm(instance=p)
+        return render(request, 'product_form.html', {'form': form})
+
+    def post(self, request, pk):
+        p = Product.objects.get(pk=pk)
+        form = ProductForm(request.POST, instance=p)
+        if form.is_valid():
+            form.save()
+            return redirect('/')
+        else:
+            return render(request, 'product_form.html', {'form': form})
 
 # Create your views here.
 def index(request):
