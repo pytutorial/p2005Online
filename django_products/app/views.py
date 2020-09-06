@@ -79,3 +79,7 @@ def viewOrder(request, pk):
     order = Order.objects.get(pk=pk)    #get_object_or_404
     context = {'order': order}
     return render(request, 'order/detail.html', context)    
+
+@login_required
+def confirmOrder(request, pk):
+    return render(request, 'order/confirm.html')
