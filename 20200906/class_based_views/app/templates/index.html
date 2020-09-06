@@ -1,2 +1,6 @@
 <!--app/templates/index.html-->
-Home
+<ul>
+    {%for p in productList %}
+        <li>{{p.code}}, {{p.name}}, {{p.price}}</li>
+    {%endfor%}
+</ul>
