@@ -94,3 +94,11 @@ def confirmOrder(request, pk):
             return redirect('/list_order')
     context = {'form': form}
     return render(request, 'order/confirm.html', context)
+
+def cancelOrder(request, pk):
+    if request.method == 'POST':
+        order = Order.objects.get(pk=pk)
+        order.status = Order.Status.CANCELED
+        order.save()
+        return redirect('/list_order')
+    return render(request, 'order/cancel.html')    

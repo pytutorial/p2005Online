@@ -50,7 +50,9 @@
 
     {%if order.status == 0 %}
       <a href='/confirm_order/{{order.id}}' class="btn btn-sm btn-primary">Xác nhận hàng đã giao</a>
-      <button class="btn btn-sm btn-danger">Hủy đơn hàng</button>
+      <a href='/cancel_order/{{order.id}}' 
+        class="btn btn-sm btn-danger">Hủy đơn hàng
+      </a>
     {%endif%}
   </div>
 {%endblock%}
