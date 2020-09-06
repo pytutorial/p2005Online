@@ -71,6 +71,7 @@ def updateProduct(request, pk):
 @login_required
 def listOrder(request):
     orderList = Order.objects.all()
+    orderList = orderList.order_by('status', 'dateOrder')
     context = {'orderList': orderList}
     return render(request, 'order/list.html', context)
 
@@ -82,4 +83,14 @@ def viewOrder(request, pk):
 
 @login_required
 def confirmOrder(request, pk):
-    return render(request, 'order/confirm.html')
+    form = OrderConfirmForm()    
+    if request.method == 'POST':
+        form = OrderConfirmForm(request.POST)
+        if form.is_valid():
+            order = Order.objects.get(pk=pk)
+            order.status = Order.Status.DELIVERED
+            order.deliverDate = form.cleaned_data['deliverDate']
+            order.save()
+            return redirect('/list_order')
+    context = {'form': form}
+    return render(request, 'order/confirm.html', context)

@@ -16,3 +16,6 @@ class OrderForm(forms.Form):
     fullname = forms.CharField(max_length=50)
     phone = forms.CharField(max_length=20)
     address = forms.CharField(max_length=200)
+
+class OrderConfirmForm(forms.Form):    
+    deliverDate = forms.DateTimeField(input_formats=['%d/%m/%Y %I:%M %p'])
