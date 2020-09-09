@@ -5,7 +5,15 @@
     var url = 'http://127.0.0.1:8000/api/search_product';
     var resp = await fetch(url);
     var result = await resp.json();
-    console.log(result);
+    //console.log(result);
+    var html = '<ul>';
+    for(var i = 0; i < result.length; i++) {
+      html += '<li>' + result[i].name + '</li>';
+    }
+    html += '</ul>';
+    var el = document.getElementById('app');
+    el.innerHTML = html;
+    //alert(html);
   }
   init();
 </script>
