@@ -1,5 +1,14 @@
-<script>    
-    fetch('http://127.0.0.1:8000/api/hello')
-        .then(resp => resp.json())
-        .then(result => alert(result.message));
+<script>
+  /*fetch('http://127.0.0.1:8000/api/hello')
+      .then(resp => resp.json())
+      .then(result => alert(result.message));
+  */
+
+  async function init() {    
+    var resp = await fetch('http://127.0.0.1:8000/api/hello');
+    var result = await resp.json();
+    alert(result.message);
+  }  
+  init();
+
 </script>
