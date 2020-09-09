@@ -33,3 +33,12 @@ def createProduct(request):
     next_id = productList[-1]['id'] + 1 if productList else 1
     productList.append({'id': next_id, 'code': code, 'name': name})
     return Response({'success': True})
+#127.0.0.1:8000/api/update_product/1
+@api_view(['PUT'])
+def updateProduct(request, pk):
+    data = request.data
+    for p in productList:
+        if str(p['id'] == pk):
+            p.update(data)    
+            return Response({'success': True})
+    return Response({'success': False, 'error': 'Not found'})
