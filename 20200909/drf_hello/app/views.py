@@ -42,3 +42,10 @@ def updateProduct(request, pk):
             p.update(data)    
             return Response({'success': True})
     return Response({'success': False, 'error': 'Not found'})
+
+#127.0.0.1:8000/api/delete_product/1
+@api_view(['DELETE'])
+def deleteProduct(request, pk):
+    global productList
+    productList = [p for p in productList if str(p['id']) != pk]
+    return Response({'success': True})
