@@ -1,0 +1,16 @@
+<script src="https://unpkg.com/react@16/umd/react.development.js"></script>
+<script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+<script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+<div id="app"></div>
+
+<script type="text/babel">
+  function render(result) {
+    return <div>Hello</div>;
+  }
+  async function init() {
+    var resp = await fetch('http://127.0.0.1:8000/api/search_product');
+    var result = await resp.json();
+    ReactDOM.render(render(result), document.getElementById('app'));
+  }
+  init();
+</script>
