@@ -4,6 +4,17 @@
 <div id="app"></div>
 
 <script type="text/babel">
+  function RenderRow(props) {
+    var p = props.p;
+    var i = props.i;
+    return (
+      <tr>
+        <td>{i+1}</td>
+        <td>{p.code}</td>
+        <td>{p.name}</td>
+      </tr>
+    );
+  }
   function render(result) {
     //return <div>Hello</div>;
     /*
@@ -22,13 +33,7 @@
           </tr>
         </thead>
         <tbody>
-          {result.map((p, i) =>
-            <tr>
-              <td>{i+1}</td>
-              <td>{p.code}</td>
-              <td>{p.name}</td>
-            </tr>
-          )}
+          {result.map((p, i) => <RenderRow p={p} i={i}/> )}
         </tbody>
       </table>
     );
