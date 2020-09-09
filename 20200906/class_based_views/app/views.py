@@ -3,6 +3,7 @@ from django.views import View
 from django.views.generic.edit import CreateView, UpdateView
 from .models import Product
 from .forms import ProductForm
+
 #127.0.0.1:8000/create_product
 class ProductCreateView(CreateView):
     #model = Product
