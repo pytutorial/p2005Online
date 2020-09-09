@@ -5,7 +5,33 @@
 
 <script type="text/babel">
   function render(result) {
-    return <div>Hello</div>;
+    //return <div>Hello</div>;
+    /*
+    return (
+      <ul>
+        {result.map(p => <li>{p.name}</li>)}
+      </ul>
+    );*/
+    return (
+      <table border="1" style={{width: "100%"}}>
+        <thead>
+          <tr className="text-center">
+            <th>STT</th>
+            <th>Mã</th>
+            <th>Tên</th>
+          </tr>
+        </thead>
+        <tbody>
+          {result.map((p, i) =>
+            <tr>
+              <td>{i+1}</td>
+              <td>{p.code}</td>
+              <td>{p.name}</td>
+            </tr>
+          )}
+        </tbody>
+      </table>
+    );
   }
   async function init() {
     var resp = await fetch('http://127.0.0.1:8000/api/search_product');
