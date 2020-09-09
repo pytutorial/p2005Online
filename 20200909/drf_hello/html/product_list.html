@@ -1,0 +1,11 @@
+<div id='app'></div>
+
+<script>
+  async function init() {
+    var url = 'http://127.0.0.1:8000/api/search_product';
+    var resp = await fetch(url);
+    var result = await resp.json();
+    console.log(result);
+  }
+  init();
+</script>
