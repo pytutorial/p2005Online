@@ -1,14 +1,11 @@
-<script>
-  /*fetch('http://127.0.0.1:8000/api/hello')
-      .then(resp => resp.json())
-      .then(result => alert(result.message));
-  */
+<div id='app'></div>
 
+<script>  
   async function init() {    
     var resp = await fetch('http://127.0.0.1:8000/api/hello');
     var result = await resp.json();
-    alert(result.message);
+    var el = document.getElementById('app');
+    el.innerHTML = result.message;
   }  
   init();
-
 </script>
