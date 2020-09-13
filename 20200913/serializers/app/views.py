@@ -32,3 +32,15 @@ def createProduct(request):#127.0.0.1:8000/api/create_product
     else:
         errors = serializer.errors
         return Response({'success': False, 'errors': errors})
+
+@api_view(['PUT'])
+def updateProduct(request, pk):
+    p = Product.objects.get(pk=pk)
+    serializer = ProductSerializer(data=request.data,
+                                    instance=p)
+    if serializer.is_valid():
+        serializer.save()
+        return Response({'success': True})
+    else:
+        errors = serializer.errors
+        return Response({'success': False, 'errors': errors})

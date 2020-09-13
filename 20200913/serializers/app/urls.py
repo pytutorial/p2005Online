@@ -6,4 +6,5 @@ urlpatterns = [
     path('get_product_detail/<pk>', getProductDetail),
     path('search_product', searchProduct),
     path('create_product', createProduct),
+    path('update_product/<pk>', updateProduct),
 ]
