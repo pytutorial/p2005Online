@@ -19,3 +19,13 @@
     </button>
   </form>
 </div>
+<script>
+  async function saveProduct() {
+    var fmt = document.getElementById('fmt');
+    var data = new FormData(fmt);
+    var url = 'http://127.0.0.1:8000/api/create_product';
+    var resp = await fetch(url, {body:data, method: 'POST'});
+    var result = await resp.json();
+    console.log(result);
+  }
+</script>
