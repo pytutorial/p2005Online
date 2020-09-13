@@ -27,5 +27,10 @@
     var resp = await fetch(url, {body:data, method: 'POST'});
     var result = await resp.json();
     console.log(result);
+    if(result.success) {
+      alert('Sản phẩm đã được lưu');
+    }else {
+      alert('Lỗi xảy ra khi lưu sản phẩm');
+    }
   }
 </script>
