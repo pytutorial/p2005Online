@@ -25,6 +25,7 @@ def searchProduct(request):
 @api_view(['POST'])
 def createProduct(request):#127.0.0.1:8000/api/create_product
     data = request.data 
+    print('data=', data)
     serializer = ProductSerializer(data=data)
     if serializer.is_valid():
         serializer.save()
