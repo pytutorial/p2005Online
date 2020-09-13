@@ -13,3 +13,11 @@ def getProductDetail(request, pk):
     p = Product.objects.get(pk=pk)
     data = ProductSerializer(p).data
     return Response(data)
+
+#127.0.0.1:8000/api/search_product?keyword=IPhone+X
+@api_view(['GET'])
+def searchProduct(request):
+    keyword = request.GET.get('keyword', '')
+    result = Product.objects.filter(name__icontains=keyword)
+    data = ProductSerializer(result, many=True).data
+    return Response(data)
