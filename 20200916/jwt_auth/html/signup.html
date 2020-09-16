@@ -22,13 +22,21 @@
   </div>
 </div>
 <script>
+  async function logIn(data) {
+    var url = 'http://127.0.0.1:8000/api/token';
+    var resp = await fetch(url, {method: 'POST', body: data});
+    var result = await resp.json();
+    localStorage.setItem('token', result.access);
+    location.href = 'index.html';
+  }
+  
   async function signup() {
     var url = 'http://127.0.0.1:8000/api/signup';
     var data = new FormData(document.getElementById('fmt'));
     var resp = await fetch(url, {method: 'POST', body: data});
     var result = await resp.json();
     if(result.success) {
-      alert('Success'); //TODO: Auto login
+      await logIn(data); //alert('Success'); //TODO: Auto login
     }else {
       alert('Fail to create user');
       console.log(result.errors);
