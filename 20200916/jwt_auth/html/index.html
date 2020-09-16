@@ -1,0 +1,25 @@
+<div id='app'></div>
+
+<a href='javascript:logOut()' >Logout</a>
+<script>  
+  if(!localStorage.getItem('token')) {
+    location.href = 'login.html';
+  }
+
+  async function init() {
+    var headers = {
+      Authorization: "Bearer " + localStorage.getItem('token')
+    };
+    var url = 'http://127.0.0.1:8000/api/hello';
+    var resp = await fetch(url, {headers: headers});
+    var result = await resp.json();
+    document.getElementById('app').innerHTML = result.message;
+    //alert(result.message);
+  }
+  init();
+
+  function logOut() {
+    localStorage.removeItem('token');
+    location.href = 'login.html';
+  }
+</script>

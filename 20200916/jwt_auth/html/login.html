@@ -9,6 +9,12 @@
     var data = new FormData(document.getElementById('fmt'));
     var resp = await fetch(url, {body:data, method: 'POST'});
     var result = await resp.json();
-    alert(result.access);
+    //alert(result.access); 
+    if(result.access) {
+      localStorage.setItem('token', result.access);
+      location.href = 'index.html';
+    }else {
+      alert('Tên đăng nhập hoặc mật khẩu không đúng');
+    }
   }
 </script>
