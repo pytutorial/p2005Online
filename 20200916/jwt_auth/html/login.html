@@ -1,0 +1,14 @@
+<form id='fmt'>
+  <p>Username: <input name="username"></p>
+  <p>Password: <input name="password" type="password"></p>
+  <button type="button" onclick="logIn()">Login</button>
+</form>
+<script>
+  async function logIn() {
+    var url = 'http://127.0.0.1:8000/api/token';
+    var data = new FormData(document.getElementById('fmt'));
+    var resp = await fetch(url, {body:data, method: 'POST'});
+    var result = await resp.json();
+    alert(result.access);
+  }
+</script>
