@@ -14,6 +14,9 @@ def createUser(request):
     if not username:
         errors.append('Missing username.')
 
+    if User.objects.filter(username=username).count() > 0:
+        errors.append('User already exists.')    
+
     if not password:
         errors.append('Missing password.')
 

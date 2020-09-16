@@ -2,20 +2,36 @@
 <div class="container">
   <div class="row mt-5">
     <div class="col-4 offset-4 p-3" style="border: 1px solid #AAA;">
-      <h3>Signup</h3>
-      <div class="form-group mt-3">
-        <label>Username:</label>
-        <input name='username' class="form-control">
-      </div>
-      <div class="form-group">
-        <label>Password:</label>
-        <input name='password' type='password' class='form-control'>
-      </div>
-      <div class="form-group">
-        <label>Password confirm:</label>
-        <input name='password2' type='password' class='form-control'>
-      </div>
-      <button type="button" class="btn btn-primary">Signup</button>
+      <form id='fmt'>
+        <h3>Signup</h3>
+        <div class="form-group mt-3">
+          <label>Username:</label>
+          <input name='username' class="form-control">
+        </div>
+        <div class="form-group">
+          <label>Password:</label>
+          <input name='password' type='password' class='form-control'>
+        </div>
+        <div class="form-group">
+          <label>Password confirm:</label>
+          <input name='password2' type='password' class='form-control'>
+        </div>
+        <button type="button" onclick="signup()" class="btn btn-primary">Signup</button>
+      </form>      
     </div>
   </div>
 </div>
+<script>
+  async function signup() {
+    var url = 'http://127.0.0.1:8000/api/signup';
+    var data = new FormData(document.getElementById('fmt'));
+    var resp = await fetch(url, {method: 'POST', body: data});
+    var result = await resp.json();
+    if(result.success) {
+      alert('Success'); //TODO: Auto login
+    }else {
+      alert('Fail to create user');
+      console.log(result.errors);
+    }
+  }
+</script>
